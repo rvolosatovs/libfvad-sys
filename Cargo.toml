@@ -1,0 +1,15 @@
+[package]
+name = "libfvad-sys"
+version = "1.0.0"
+authors = ["Roman Volosatovs <rvolosatovs@riseup.net>"]
+edition = "2018"
+links = "libfvad"
+description = "This crate provides libfvad bindings"
+repository = "https://github.com/rvolosatovs/libfvad-sys"
+license = "MIT OR Apache-2.0"
+keywords = ["ffi", "vad", "libfvad", "fvad"]
+categories = ["external-ffi-bindings"]
+
+[build-dependencies]
+autotools = "0.2.2"
+bindgen = "0.56.0"
