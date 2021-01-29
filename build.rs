@@ -18,6 +18,7 @@ fn main() {
         .file("src/libfvad/src/vad/vad_gmm.c")
         .file("src/libfvad/src/vad/vad_sp.c")
         .file("src/libfvad/src/fvad.c")
+        .flag_if_supported("-O2")
         .compile("libfvad");
 
     bindgen::Builder::default()
