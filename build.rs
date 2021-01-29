@@ -1,18 +1,24 @@
+extern crate cc;
 use std::{env, path::PathBuf};
 
-use autotools;
-
 fn main() {
-    println!(
-        "cargo:rustc-link-search=native={}",
-        autotools::Config::new("src/libfvad")
-            .reconf("-iv")
-            .build()
-            .join("lib")
-            .display()
-    );
-    println!("cargo:rustc-link-lib=static=fvad");
-    println!("cargo:rustc-link-lib=c");
+    cc::Build::new()
+        .include("src/libfvad/src")
+        .include("src/libfvad/src/vad")
+        .include("src/libfvad/src/signal_processing")
+        .file("src/libfvad/src/signal_processing/division_operations.c")
+        .file("src/libfvad/src/signal_processing/get_scaling_square.c")
+        .file("src/libfvad/src/signal_processing/resample_48khz.c")
+        .file("src/libfvad/src/signal_processing/resample_by_2_internal.c")
+        .file("src/libfvad/src/signal_processing/resample_fractional.c")
+        .file("src/libfvad/src/signal_processing/spl_inl.c")
+        .file("src/libfvad/src/signal_processing/energy.c")
+        .file("src/libfvad/src/vad/vad_core.c")
+        .file("src/libfvad/src/vad/vad_filterbank.c")
+        .file("src/libfvad/src/vad/vad_gmm.c")
+        .file("src/libfvad/src/vad/vad_sp.c")
+        .file("src/libfvad/src/fvad.c")
+        .compile("libfvad");
 
     bindgen::Builder::default()
         .header("src/libfvad/include/fvad.h")

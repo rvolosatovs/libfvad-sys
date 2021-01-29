@@ -1,15 +1,16 @@
 [package]
 name = "libfvad-sys"
 version = "1.0.0"
-authors = ["Roman Volosatovs <rvolosatovs@riseup.net>"]
+authors = ["Roman Volosatovs <rvolosatovs@riseup.net>", "kaegi <kaegi.dev@gmail.com>"]
 edition = "2018"
 links = "libfvad"
 description = "Bindings to libfvad"
+documentation = "https://docs.rs/libfvad-sys"
 repository = "https://github.com/rvolosatovs/libfvad-sys"
 license = "MIT OR Apache-2.0"
 keywords = ["ffi", "vad", "libfvad", "fvad"]
 categories = ["external-ffi-bindings", "multimedia::audio"]
 
 [build-dependencies]
-autotools = "0.2.2"
 bindgen = "0.56.0"
+cc = "1.0.45"
