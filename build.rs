@@ -6,6 +6,7 @@ fn main() {
     println!(
         "cargo:rustc-link-search=native={}",
         autotools::Config::new("src/libfvad")
+            .reconf("-iv")
             .build()
             .join("lib")
             .display()
