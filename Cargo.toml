@@ -13,4 +13,4 @@ categories = ["external-ffi-bindings", "multimedia::audio"]
 
 [build-dependencies]
 bindgen = "0.56.0"
-cc = "1.0.45"
+cc = "1.0.66"
