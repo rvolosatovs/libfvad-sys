@@ -24,6 +24,9 @@ fn main() {
     bindgen::Builder::default()
         .header("src/libfvad/include/fvad.h")
         .parse_callbacks(Box::new(bindgen::CargoCallbacks))
+        // Makes size_t = usize rather than u64/u32 on different platforms.
+        // Has the benefit of exposing a single, platform-independent type signature.
+        .size_t_is_usize(true)
         .generate()
         .expect("Failed to generate bindings")
         .write_to_file(PathBuf::from(env::var("OUT_DIR").unwrap()).join("bindings.rs"))
